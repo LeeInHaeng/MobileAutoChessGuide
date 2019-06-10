@@ -94,7 +94,7 @@
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>tomcat-maven-plugin</artifactId>
 				<configuration>
-					<url>http://ec2-52-79-241-40.ap-northeast-2.compute.amazonaws.com:8080/manager/text</url>
+					<url>http://ec2-13-125-42-247.ap-northeast-2.compute.amazonaws.com:8080/manager/text</url>
 					<path>/MobileAutoChessGuide</path>
 					<server>TomcatServer</server>
 				</configuration>
