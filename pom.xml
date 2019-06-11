@@ -95,7 +95,7 @@
 				<artifactId>tomcat-maven-plugin</artifactId>
 				<configuration>
 					<url>http://ec2-13-125-42-247.ap-northeast-2.compute.amazonaws.com:8080/manager/text</url>
-					<path>/mguide</path>
+					<path>/MobileAutoChessGuide</path>
 					<server>TomcatServer</server>
 				</configuration>
 			</plugin>
