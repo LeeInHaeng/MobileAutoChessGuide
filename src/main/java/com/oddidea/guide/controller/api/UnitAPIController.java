@@ -16,17 +16,18 @@ public class UnitAPIController {
 	@Autowired
 	private UnitService unitService;
 	
-	@RequestMapping(value="/hi", method=RequestMethod.GET)
-	public String hi() {
-		return "test";
-	}
-	
 	@ResponseBody
-	@RequestMapping(value="/hi", method=RequestMethod.POST)
-	public Object hi(@RequestBody Object data) {
-		System.out.println(data);
-		
+	@RequestMapping(value="/unitList", method=RequestMethod.GET)
+	public Object unitList() {
 		return unitService.getUnitEvaluationList();
 	}
+	
+//	@ResponseBody
+//	@RequestMapping(value="/hi", method=RequestMethod.POST)
+//	public Object hi(@RequestBody Object data) {
+//		//System.out.println(data);
+//		
+//		
+//	}
 	
 }

@@ -5,14 +5,16 @@
 
 	<select id="getList" resultType="unitvo">
 	<![CDATA[
-		select a.no as unitNo, a.name as name, a.price as price,
-			a.unit_icon as unitIcon, a.preview_icon as previewIcon, tier,
-		    c.name as speciesName, c.icon as speciesIcon,
-		    d.name as jobName, d.icon as jobIcon
+		select a.no as unitNo, a.name as unitName, a.eng_name as unitEngName, 
+			a.price, a.hp, a.armor, a.resistance, a.attack, a.speed, a.range, a.dps, 
+			a.unit_icon as unitIcon, a.preview_icon as previewIcon, a.tier,
+			c.name as speciesName, c.icon as speciesIcon,
+			d.name as jobName, d.icon as jobIcon
 		from unit a
 		join unit_species b on a.no=b.unit_no
 		join species c on b.species_no=c.no
-		join job d on a.job_no=d.no;
+		join job d on a.job_no=d.no
+		order by a.tier; 
 	]]>
 	</select>
 	
