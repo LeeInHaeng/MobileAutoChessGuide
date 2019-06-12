@@ -1,5 +1,5 @@
 import React, { Component } from "react"
-import { StyleSheet, View, Text, List, FlatList, ListItem, Image } from "react-native"
+import { StyleSheet, View, Text, List, FlatList, ListItem, Image, ScrollView } from "react-native"
 
 const s = StyleSheet.create({
   container: {
@@ -9,21 +9,38 @@ const s = StyleSheet.create({
     alignItems: "stretch"
   },
   categoryView: {
-    flex: 5,
+    flex: 0,
+    height: 50,
     width: "100%",
     flexDirection: "row",
-    justifyContent: "space-evenly",
-  },
-  listView: {
-    flex: 95,
-    flexDirection: "row",
-    borderWidth: 1,
+    justifyContent: "space-evenly"
   },
   categoryViewItem: {
     flex: 20,
+    height: "100%",
     borderWidth: 1,
     justifyContent: "center",
     alignItems: "center"
+  },
+  listView: {
+    flex: 93,
+    flexDirection: "column",
+    justifyContent: "space-evenly",
+    overflow: "scroll",
+    borderWidth: 1
+  },
+  listRow: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    paddingVertical: 10,
+    paddingHorizontal: 30,
+    margin: 2,
+    borderColor: "#2a4944",
+    borderWidth: 1
+  },
+  title: {
+    fontSize: 24
   }
 })
 
@@ -32,15 +49,16 @@ class HeroEvaluation extends Component {
     super(props)
     this.state = {
       category: "티어",
-      viewContent: null,
       categoryArray: ["티어", "종족", "직업", "돈"]
     }
   }
 
+  componentDidMount() {
+    fetch()
+  }
+
   render() {
     const { category, categoryArray } = this.state
-
-    alert(category)
 
     return (
       <View style={s.container}>
@@ -64,9 +82,30 @@ class HeroEvaluation extends Component {
             )
           })}
         </View>
-        <View style={s.listView}>
-          <Image source={require("/images/preview/검객.jpg")}></Image>
-        </View>
+        <ScrollView>
+          <Text style={s.title}>1티어</Text>
+          {[1, 2, 3].map((item, index) => {
+            return (
+              <View style={s.listRow} key={index}>
+                <Image style={s.rowImage} source={require("/images/preview/검객.jpg")} />
+                <Image style={s.rowImage} source={require("/images/preview/검객.jpg")} />
+                <Image style={s.rowImage} source={require("/images/preview/검객.jpg")} />
+                <Image style={s.rowImage} source={require("/images/preview/검객.jpg")} />
+              </View>
+            )
+          })}
+          <Text style={s.title}>2티어</Text>
+          {[1, 2, 3].map((item, index) => {
+            return (
+              <View style={s.listRow} key={index}>
+                <Image style={s.rowImage} source={require("/images/preview/검객.jpg")} />
+                <Image style={s.rowImage} source={require("/images/preview/검객.jpg")} />
+                <Image style={s.rowImage} source={require("/images/preview/검객.jpg")} />
+                <Image style={s.rowImage} source={require("/images/preview/검객.jpg")} />
+              </View>
+            )
+          })}
+        </ScrollView>
       </View>
     )
   }

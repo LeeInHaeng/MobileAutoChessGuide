@@ -6,6 +6,8 @@ import DefaultFooter from "./src/Layout/DefaultFooter";
 import { Provider } from "react-redux";
 import store from "./store"
 
+console.disableYellowBox = true
+
 const s = StyleSheet.create({
   container: {
     flex: 1,

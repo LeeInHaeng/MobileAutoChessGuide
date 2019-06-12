@@ -5,7 +5,7 @@ import { setSelectedMenuAction } from "../../action/commonInfo"
 
 const s = StyleSheet.create({
   container: {
-    height: 50,
+    height: 70,
     backgroundColor: "pink",
     flexDirection: "row",
     justifyContent: "space-evenly",
@@ -13,7 +13,7 @@ const s = StyleSheet.create({
   },
   items: {
     flex: 33,
-    height: 50,
+    height: 70,
     borderWidth: 1,
     flexDirection: "row",
     justifyContent: "center",
