@@ -16,6 +16,11 @@ public class UnitAPIController {
 	@Autowired
 	private UnitService unitService;
 	
+	@RequestMapping(value="/test", method=RequestMethod.GET)
+	public String test() {
+		return "test";
+	}
+	
 	@ResponseBody
 	@RequestMapping(value="/unitList", method=RequestMethod.GET)
 	public Object unitList() {
