@@ -22,17 +22,11 @@
 		
 		$("#ajaxTest").click( function(){
 			
-			var testData = {
-				test1: 'this is test1 data',
-				test2: 'this is test2 data'
-			};
-			
 			  $.ajax( {
 				contentType: "application/json; charset=UTF-8",
-			    url : "${pageContext.servletContext.contextPath }/api/unit/hi",
-			    type: "post",
-			    dataType: "json",
-			    data: JSON.stringify(testData),
+			    url : "${pageContext.servletContext.contextPath }/api/unit/unitList",
+			    type: "get",
+			    dataType: "",
 			    success: function( response ){
 			    	console.log(response);
 			    },
