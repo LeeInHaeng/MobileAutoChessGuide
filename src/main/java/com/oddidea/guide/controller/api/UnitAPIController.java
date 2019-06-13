@@ -22,7 +22,7 @@ public class UnitAPIController {
 	}
 	
 	@ResponseBody
-	@CrossOrigin(origins = "http://13.209.228.119")
+	@CrossOrigin(origins = "http://13.209.228.119:8080")
 	@RequestMapping(value="/unitList", method=RequestMethod.GET)
 	public Object unitList() {
 		return unitService.getUnitEvaluationList();
