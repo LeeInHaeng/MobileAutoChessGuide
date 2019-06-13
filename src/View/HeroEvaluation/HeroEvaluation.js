@@ -3,10 +3,12 @@ import { StyleSheet, View, Text, List, FlatList, ListItem, Image, ScrollView } f
 
 const s = StyleSheet.create({
   container: {
-    flex: 1,
-    flexDirection: "column",
-    justifyContent: "flex-start",
-    alignItems: "stretch"
+    flex: 1
+  },
+  advertisement: {
+    flex: 0,
+    height: 70,
+    width: "100%"
   },
   categoryView: {
     flex: 0,
@@ -22,19 +24,12 @@ const s = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center"
   },
-  listView: {
-    flex: 93,
-    flexDirection: "column",
-    justifyContent: "space-evenly",
-    overflow: "scroll",
-    borderWidth: 1
-  },
   listRow: {
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
     paddingVertical: 10,
-    paddingHorizontal: 30,
+    paddingHorizontal: 20,
     margin: 2,
     borderColor: "#2a4944",
     borderWidth: 1
@@ -62,6 +57,7 @@ class HeroEvaluation extends Component {
 
     return (
       <View style={s.container}>
+        <View style={s.advertisement}><Text>광고</Text></View>
         <View style={s.categoryView}>
           <View style={s.categoryViewItem}>
             <Text>카테고리</Text>
