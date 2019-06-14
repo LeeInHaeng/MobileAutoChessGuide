@@ -18,4 +18,82 @@
 	]]>
 	</select>
 	
+	<select id="getBestComment" parameterType="int" resultType="unitcommentvo">
+	<![CDATA[
+		select a.no as commentNo, a.reg_date as regDate, a.content, 
+			a.unit_no as unitNo, count(b.muuid) as goodCnt, count(c.muuid) as badCnt
+		from unit_comment a
+		left join unit_comment_good b on a.no = b.unit_comment_no
+		left join unit_comment_bad c on a.no = c.unit_comment_no
+		where a.unit_no=#{unitNo}
+		group by a.no
+		order by goodCnt desc
+		limit 0,3;
+	]]>
+	</select>
+	
+	<select id="getCommentList" parameterType="int" resultType="unitcommentvo">
+	<![CDATA[
+		select a.no as commentNo, a.reg_date as regDate, a.content, 
+			a.unit_no as unitNo, count(b.muuid) as goodCnt, count(c.muuid) as badCnt
+		from unit_comment a
+		left join unit_comment_good b on a.no = b.unit_comment_no
+		left join unit_comment_bad c on a.no = c.unit_comment_no
+		where a.unit_no=#{unitNo}
+		group by a.no
+		order by commentNo desc;
+	]]>
+	</select>
+	
+	<select id="getGoodCommentNo" parameterType="map" resultType="object">
+	<![CDATA[
+		select a.no as commentNo
+		from unit_comment a
+		join unit_comment_good b on a.no = b.unit_comment_no
+		where a.unit_no=#{unitNo} and b.muuid=#{muuid};
+	]]>
+	</select>
+	
+	<select id="getBadCommentNo" parameterType="map" resultType="object">
+	<![CDATA[
+		select a.no as commentNo
+		from unit_comment a
+		join unit_comment_bad b on a.no = b.unit_comment_no
+		where a.unit_no=#{unitNo} and b.muuid=#{muuid};
+	]]>
+	</select>
+	
+	<insert id="goodVote" parameterType="map">
+	<![CDATA[
+		insert into unit_comment_good
+		values(#{commentNo}, #{muuid})
+	]]>
+	</insert>
+	
+	<insert id="badVote" parameterType="map">
+	<![CDATA[
+		insert into unit_comment_bad
+		values(#{commentNo}, #{muuid})
+	]]>
+	</insert>
+	
+	<delete id="goodCancel" parameterType="map">
+	<![CDATA[
+		delete from unit_comment_good where unit_comment_no=#{commentNo} and muuid=#{muuid}
+	]]>
+	</delete>
+	
+	<delete id="badCancel" parameterType="map">
+	<![CDATA[
+		delete from unit_comment_bad where unit_comment_no=#{commentNo} and muuid=#{muuid}
+	]]>
+	</delete>
+	
+	<insert id="commentAdd" parameterType="map">
+	<![CDATA[
+		insert into unit_comment
+		values(null, now(), #{content}, #{unitNo})
+	]]>
+	</insert>
+	
 </mapper>

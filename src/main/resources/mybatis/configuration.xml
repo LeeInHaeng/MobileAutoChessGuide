@@ -3,6 +3,7 @@
 <configuration>
 	<typeAliases>
 		<typeAlias alias="unitvo" type="com.oddidea.guide.vo.UnitVo"></typeAlias>
+		<typeAlias alias="unitcommentvo" type="com.oddidea.guide.vo.UnitCommentVo"></typeAlias>
     </typeAliases>	
 	<mappers>
 		<mapper resource="mybatis/mapper/unit.xml" />
