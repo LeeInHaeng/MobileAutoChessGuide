@@ -1,5 +1,7 @@
 import React, { Component } from "react"
 import { StyleSheet, View, Text, List, FlatList, ListItem, Image, ScrollView } from "react-native"
+import Tier from "./Tier"
+import Species from "./Species"
 
 const s = StyleSheet.create({
   container: {
@@ -24,40 +26,41 @@ const s = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center"
   },
-  listRow: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-    paddingVertical: 10,
-    paddingHorizontal: 20,
-    margin: 2,
-    borderColor: "#2a4944",
-    borderWidth: 1
-  },
-  title: {
-    fontSize: 24
-  }
 })
+
+
 
 class HeroEvaluation extends Component {
   constructor(props) {
     super(props)
     this.state = {
       category: "티어",
-      categoryArray: ["티어", "종족", "직업", "돈"]
+      categoryArray: ["티어", "종족", "직업", "돈"],
+      list: []
     }
   }
 
   componentDidMount() {
-    fetch()
+    fetch("http://13.209.228.119:8080/MobileAutoChessGuide/api/unit/unitList")
+      .then(response => {
+        return response.json()
+      })
+      .then(responseJson => {
+        this.setState({
+          list: responseJson
+        })
+      })
+      .catch(error => console.log(error))
   }
 
   render() {
-    const { category, categoryArray } = this.state
+    const { category, categoryArray, list } = this.state
 
     return (
       <View style={s.container}>
-        <View style={s.advertisement}><Text>광고</Text></View>
+        <View style={s.advertisement}>
+          <Text>광고</Text>
+        </View>
         <View style={s.categoryView}>
           <View style={s.categoryViewItem}>
             <Text>카테고리</Text>
@@ -78,30 +81,9 @@ class HeroEvaluation extends Component {
             )
           })}
         </View>
-        <ScrollView>
-          <Text style={s.title}>1티어</Text>
-          {[1, 2, 3].map((item, index) => {
-            return (
-              <View style={s.listRow} key={index}>
-                <Image style={s.rowImage} source={require("/images/preview/검객.jpg")} />
-                <Image style={s.rowImage} source={require("/images/preview/검객.jpg")} />
-                <Image style={s.rowImage} source={require("/images/preview/검객.jpg")} />
-                <Image style={s.rowImage} source={require("/images/preview/검객.jpg")} />
-              </View>
-            )
-          })}
-          <Text style={s.title}>2티어</Text>
-          {[1, 2, 3].map((item, index) => {
-            return (
-              <View style={s.listRow} key={index}>
-                <Image style={s.rowImage} source={require("/images/preview/검객.jpg")} />
-                <Image style={s.rowImage} source={require("/images/preview/검객.jpg")} />
-                <Image style={s.rowImage} source={require("/images/preview/검객.jpg")} />
-                <Image style={s.rowImage} source={require("/images/preview/검객.jpg")} />
-              </View>
-            )
-          })}
-        </ScrollView>
+        {category === "티어" ? <Tier list={list} /> : category === "종족" ? <Species list={list} /> : null
+
+        }
       </View>
     )
   }
