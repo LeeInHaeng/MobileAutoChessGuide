@@ -1,7 +1,10 @@
 import React, { Component } from "react"
 import { StyleSheet, View, Text, List, FlatList, ListItem, Image, ScrollView } from "react-native"
+import { ImagePath } from "../../../lib/index"
 import Tier from "./Tier"
 import Species from "./Species"
+import Job from "./Job"
+import Cost from "./Cost"
 
 const s = StyleSheet.create({
   container: {
@@ -25,10 +28,8 @@ const s = StyleSheet.create({
     borderWidth: 1,
     justifyContent: "center",
     alignItems: "center"
-  },
+  }
 })
-
-
 
 class HeroEvaluation extends Component {
   constructor(props) {
@@ -81,9 +82,15 @@ class HeroEvaluation extends Component {
             )
           })}
         </View>
-        {category === "티어" ? <Tier list={list} /> : category === "종족" ? <Species list={list} /> : null
-
-        }
+        {category === "티어" ? (
+          <Tier list={list} />
+        ) : category === "종족" ? (
+          <Species list={list} />
+        ) : category === "직업" ? (
+          <Job list={list} />
+        ) : category === "돈" ? (
+          <Cost list={list} />
+        ) : null}
       </View>
     )
   }

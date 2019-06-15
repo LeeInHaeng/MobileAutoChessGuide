@@ -15,12 +15,12 @@ const s = StyleSheet.create({
   }
 })
 
-const Tier = ({ list }) => {
-  const firstTier = list.filter(item => item.tier === 1)
-  const secondTier = list.filter(item => item.tier === 2)
-  const thirdTier = list.filter(item => item.tier === 3)
-  const fourthTier = list.filter(item => item.tier === 4)
-  const fifthTier = list.filter(item => item.tier === 5)
+const Cost = ({ list }) => {
+  const firstCost = list.filter(item => item.price === 1)
+  const secondCost = list.filter(item => item.price === 2)
+  const thirdCost = list.filter(item => item.price === 3)
+  const fourthCost = list.filter(item => item.price === 4)
+  const fifthCost = list.filter(item => item.price === 5)
 
   return (
     <SectionGrid
@@ -29,24 +29,24 @@ const Tier = ({ list }) => {
       spacing={20}
       sections={[
         {
-          title: "1티어",
-          data: firstTier
+          title: "1코스트",
+          data: firstCost
         },
         {
-          title: "2티어",
-          data: secondTier
+          title: "2코스트",
+          data: secondCost
         },
         {
-          title: "3티어",
-          data: thirdTier
+          title: "3코스트",
+          data: thirdCost
         },
         {
-          title: "4티어",
-          data: fourthTier
+          title: "4코스트",
+          data: fourthCost
         },
         {
-          title: "5티어",
-          data: fifthTier
+          title: "5코스트",
+          data: fifthCost
         }
       ]}
       renderItem={({ item }) => <Image style={s.rowImage} source={ImagePath[item.unitName]} />}
@@ -55,4 +55,4 @@ const Tier = ({ list }) => {
   )
 }
 
-export default Tier
+export default Cost
