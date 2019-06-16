@@ -8,13 +8,14 @@
 		select a.no as unitNo, a.name as unitName, a.eng_name as unitEngName, 
 			a.price, a.hp, a.armor, a.resistance, a.attack, a.speed, a.range, a.dps, 
 			a.unit_icon as unitIcon, a.preview_icon as previewIcon, a.tier,
-			c.name as speciesName, c.icon as speciesIcon,
+			group_concat(c.name) as speciesName, c.icon as speciesIcon,
 			d.name as jobName, d.icon as jobIcon
 		from unit a
 		join unit_species b on a.no=b.unit_no
 		join species c on b.species_no=c.no
 		join job d on a.job_no=d.no
-		order by a.tier; 
+        group by unitNo
+		order by a.tier, unitName;
 	]]>
 	</select>
 	
