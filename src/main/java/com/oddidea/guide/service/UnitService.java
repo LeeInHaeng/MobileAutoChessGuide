@@ -14,7 +14,7 @@ public class UnitService {
 	@Autowired
 	private UnitDao unitDao;
 	
-	public Object getUnitEvaluationList(){
+	public Object getUnitDetailList(){
 		return unitDao.getUnitList();
 	}
 
