@@ -5,6 +5,7 @@
 		<typeAlias alias="unitvo" type="com.oddidea.guide.vo.UnitVo"></typeAlias>
 		<typeAlias alias="unitcommentvo" type="com.oddidea.guide.vo.UnitCommentVo"></typeAlias>
 		<typeAlias alias="itemvo" type="com.oddidea.guide.vo.ItemVo"></typeAlias>
+		<typeAlias alias="itemcommentvo" type="com.oddidea.guide.vo.ItemCommentVo"></typeAlias>
     </typeAliases>	
 	<mappers>
 		<mapper resource="mybatis/mapper/unit.xml" />

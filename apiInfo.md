@@ -40,3 +40,8 @@
 ### 전체 아이템 정보 불러오기 : http://13.209.228.119:8080/MobileAutoChessGuide/api/item/itemList (GET)
 - return 데이터
   - 리스트 형태로 아이템들의 정보 반환
+
+### 유저들이 투표한 특정 아이템에 어울리는 유닛의 목록 뽑아오기 : http://13.209.228.119:8080/MobileAutoChessGuide/api/item/comment/아이템번호 (GET)
+- return 데이터
+  - 키 값 : 유닛의 번호
+  - 벨류 값 : 해당 유닛의 번호가 몇 퍼센트의 투표를 받았는지 (100 % 중 X %)

@@ -12,4 +12,15 @@
 	
 	</select>
 	
+	<select id="getCommentList" parameterType="int" resultType="itemcommentvo">
+	
+	<![CDATA[
+		select item_no as itemNo, muuid, good_unit_no1 as goodUnitNo1, good_unit_no2 as goodUnitNo2,
+			good_unit_no3 as goodUnitNo3, good_unit_no4 as goodUnitNo4, good_unit_no5 as goodUnitNo5
+		from item_comment
+		where item_no=#{itemNo}
+	]]>
+	
+	</select>
+
 </mapper>
