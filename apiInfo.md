@@ -45,3 +45,27 @@
 - return 데이터
   - 키 값 : 유닛의 번호
   - 벨류 값 : 해당 유닛의 번호가 몇 퍼센트의 투표를 받았는지 (100 % 중 X %)
+
+### 투표하기 버튼을 눌렀을 때 사용자가 이전에 해당 아이템에 투표했는지 여부를 검사 : http://13.209.228.119:8080/MobileAutoChessGuide/api/item/comment/votedUnitTest (POST)
+- POST 데이터 : var data = { itemNo : 1, muuid : 'this is dummy uuid10' };
+- return 데이터
+  - length가 0 또는 1의 길이를 가짐
+  - length가 0일 경우 해당 사용자는 이 아이템에 투표를 하지 않았음
+  - length가 1일 경우 몇번의 유닛 번호가 해당 아이템에 어울리는지 사용자가 투표한 정보를 반환
+  
+### 해당 아이템에 가장 어울리는 유닛 투표하기 (1~5 마리의 유닛 선택) : http://13.209.228.119:8080/MobileAutoChessGuide/api/item/comment/vote (POST)
+- POST 데이터 (투표하지 않은 유닛은 0으로 셋팅)
+  - 예를 들어 1번 아이템은 1, 5, 9번 유닛이 가장 어울린다고 투표하는 경우
+```js
+var data = {
+    itemNo : 1,
+    muuid : 'this is dummy uuid10',
+	goodUnitNo1 : 1,
+	goodUnitNo2 : 5,
+	goodUnitNo3 : 9,
+	goodUnitNo4 : 0,
+	goodUnitNo5 : 0
+};
+```
+- return 데이터
+  - 정상적으로 쿼리 수행 true, 비정상 쿼리 수행 false

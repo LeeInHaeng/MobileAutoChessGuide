@@ -22,5 +22,125 @@
 	]]>
 	
 	</select>
+	
+	<select id="getCommentVotedUnit" parameterType="map" resultType="itemcommentvo">
+	
+	<![CDATA[
+		select item_no as itemNo, muuid, good_unit_no1 as goodUnitNo1, good_unit_no2 as goodUnitNo2,
+			good_unit_no3 as goodUnitNo3, good_unit_no4 as goodUnitNo4, good_unit_no5 as goodUnitNo5
+		from item_comment
+		where item_no=#{itemNo} and muuid=#{muuid}
+	]]>
+	
+	</select>
+	
+	<insert id="commentVote" parameterType="map">
+	
+	<![CDATA[
+		insert into item_comment
+		values(#{itemNo}, #{muuid}, 
+	]]>
+	<choose>
+		<when test="goodUnitNo1 != 0">
+			#{goodUnitNo1},
+		</when>
+		<otherwise>
+			null,
+		</otherwise>
+	</choose>
+	
+	<choose>
+		<when test="goodUnitNo2 != 0">
+			#{goodUnitNo2},
+		</when>
+		<otherwise>
+			null,
+		</otherwise>
+	</choose>
+	
+	<choose>
+		<when test="goodUnitNo3 != 0">
+			#{goodUnitNo3},
+		</when>
+		<otherwise>
+			null,
+		</otherwise>
+	</choose>
+	
+	<choose>
+		<when test="goodUnitNo4 != 0">
+			#{goodUnitNo4},
+		</when>
+		<otherwise>
+			null,
+		</otherwise>
+	</choose>
+	
+	<choose>
+		<when test="goodUnitNo5 != 0">
+			#{goodUnitNo5})
+		</when>
+		<otherwise>
+			null)
+		</otherwise>
+	</choose>
+	
+	</insert>
+	
+	<update id="commentUpdate" parameterType="map">
+	
+	<![CDATA[
+		update item_comment set
+	]]>
+	
+	<choose>
+		<when test="goodUnitNo1 != 0">
+			good_unit_no1=#{goodUnitNo1},
+		</when>
+		<otherwise>
+			good_unit_no1=null,
+		</otherwise>
+	</choose>
+	
+	<choose>
+		<when test="goodUnitNo2 != 0">
+			good_unit_no2=#{goodUnitNo2},
+		</when>
+		<otherwise>
+			good_unit_no2=null,
+		</otherwise>
+	</choose>
+	
+	<choose>
+		<when test="goodUnitNo3 != 0">
+			good_unit_no3=#{goodUnitNo3},
+		</when>
+		<otherwise>
+			good_unit_no3=null,
+		</otherwise>
+	</choose>
+	
+	<choose>
+		<when test="goodUnitNo4 != 0">
+			good_unit_no4=#{goodUnitNo4},
+		</when>
+		<otherwise>
+			good_unit_no4=null,
+		</otherwise>
+	</choose>
+	
+	<choose>
+		<when test="goodUnitNo5 != 0">
+			good_unit_no5=#{goodUnitNo5}
+		</when>
+		<otherwise>
+			good_unit_no5=null
+		</otherwise>
+	</choose>
+	
+	where item_no=#{itemNo} and muuid=#{muuid}
+	
+	</update>
+	
 
 </mapper>

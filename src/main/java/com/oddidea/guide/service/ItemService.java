@@ -1,6 +1,5 @@
 package com.oddidea.guide.service;
 
-import java.util.Comparator;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -85,6 +84,25 @@ public class ItemService {
 		}
 
 		return votedUnitPercent;
+	}
+
+	public List<ItemCommentVo> getItemCommentVotedUnitNo(Map<String, Object> data) {
+		return itemDao.getItemVotedUnit(data);
+	}
+
+	public Boolean itemCommentVote(Map<String, Object> data) {
+		List<ItemCommentVo> isVoted = itemDao.getItemVotedUnit(data);
+		
+		try {
+			if(isVoted.size()==0) // 처음 투표
+				return itemDao.itemCommentVoteNew(data);
+			else // 이전 투표한 내용 업데이트
+				return itemDao.itemCommentVoteUpdate(data);
+		}catch(Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+		
 	}
 
 }
