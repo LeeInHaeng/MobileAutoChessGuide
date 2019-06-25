@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="effect">
+
+	<select id="getJobEffectList" resultType="jobeffectvo">
+	
+	<![CDATA[
+		select a.job_no as jobNo, b.name as jobName, a.condition as jobCondition, a.description as jobDescription
+		from job_effect a
+		join job b on a.job_no=b.no;
+	]]>
+	
+	</select>
+	
+	<select id="getSpeciesEffectList" resultType="specieseffectvo">
+	
+	<![CDATA[
+		select a.species_no as speciesNo, b.name as speciesName, a.condition as speciesCondition, a.description as speciesDescription
+		from species_effect a
+		join species b on a.species_no=b.no;
+	]]>
+	
+	</select>
+
+</mapper>

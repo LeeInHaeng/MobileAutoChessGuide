@@ -6,9 +6,12 @@
 		<typeAlias alias="unitcommentvo" type="com.oddidea.guide.vo.UnitCommentVo"></typeAlias>
 		<typeAlias alias="itemvo" type="com.oddidea.guide.vo.ItemVo"></typeAlias>
 		<typeAlias alias="itemcommentvo" type="com.oddidea.guide.vo.ItemCommentVo"></typeAlias>
+		<typeAlias alias="jobeffectvo" type="com.oddidea.guide.vo.JobEffectVo"></typeAlias>
+		<typeAlias alias="specieseffectvo" type="com.oddidea.guide.vo.SpeciesEffectVo"></typeAlias>
     </typeAliases>	
 	<mappers>
 		<mapper resource="mybatis/mapper/unit.xml" />
 		<mapper resource="mybatis/mapper/item.xml" />
+		<mapper resource="mybatis/mapper/effect.xml" />
 	</mappers>
 </configuration>
