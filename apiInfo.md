@@ -69,3 +69,9 @@ var data = {
 ```
 - return 데이터
   - 정상적으로 쿼리 수행 true, 비정상 쿼리 수행 false
+  
+# 3페이지
+### 전체 직업 효과와 종족 효과 정보 얻기 : http://13.209.228.119:8080/MobileAutoChessGuide/api/effect/effectList (GET)
+- return 데이터
+  - jobEffect : 각 조건에 따른 직업 효과
+  - speciesEffect : 각 조건에 따른 종족 효과
